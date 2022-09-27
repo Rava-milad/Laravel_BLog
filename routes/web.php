@@ -2,6 +2,7 @@
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,5 +35,12 @@ Route::get('/posts/{post:slug}', function(Post $post){ //Post::where('slug', $po
 Route::get('/categories/{category}', function(Category $category){
     return view('welcome', [
         'posts' => $category->posts
+    ]);
+});
+
+Route::get('/authors/{author:username}', function(User $author){
+
+    return view('welcome', [
+        'posts' => $author->posts
     ]);
 });
